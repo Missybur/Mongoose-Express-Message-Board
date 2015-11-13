@@ -1,0 +1,23 @@
+{
+  "name": "Mongoose-Express-Message-Board",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Missy Bur <missybur@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/missybur/Mongoose-Express-Message-Board",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0"
+  }
+}

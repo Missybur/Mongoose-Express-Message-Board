@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+  head
+    title Home
+    link(href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
+    link(rel="stylesheet" href="css/style.css")
+  body
+    .container
+      h1 Message Board
+      label(for='lastName') First Name:
+      input#firstName.editable_textarea(type='text')
+      label(for='lastName') Last Name:
+      input#lastName(type='text')
+      label#message(for='message') Message:
+      input#message(type='text')
+      button#add.btn.btn-default Add
+      #messageBoardContainer.container
+        table#contact-table.table.table-bordered
+          thead
+            tr
+              th.col-xs-1 Edit
+              th.col-xs-2 First Name:
+              th.col-xs-2 Last Name:
+              th.col-xs-2 Message:
+              th.col-xs-1 Delete:
+          tbody#list
+          tr#sample
+            td
+              a.edit(href='#')
+                i#edit.fa.fa-pencil-square-o
+            td#editor(contenteditable='true').firstName
+            td#editor(contenteditable='true').lastName
+            td#editor(contenteditable='true').message(type='message')
+            td
+              a.remove(href='#')
+                i#remove.fa.fa-trash-o
+
+    script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src='js/main.js')

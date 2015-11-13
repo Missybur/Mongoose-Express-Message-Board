@@ -1,0 +1,33 @@
+{
+  "name": "Mongoose-Express-Message-Board",
+  "version": "1.0.0",
+  "description": "First, cd into the project directory, and do `npm run setup` to install the dependencies listed in the package.json and bower.json.  Then you can start the server in Node.",
+  "main": "app.js",
+  "author": "",
+  "scripts": {
+    "start": "node app.js",
+    "postinstall": "bower i",
+    "setup": "npm i && bower i"
+  },
+  "engines": {
+    "node": "5.0.0"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "bower": "^1.6.5",
+    "express": "^4.13.3",
+    "jade": "^1.11.0",
+    "mongoose": "^4.2.5",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/missybur/Mongoose-Express-Message-Board.git"
+  },
+  "bugs": {
+    "url": "https://github.com/missybur/Mongoose-Express-Message-Board/issues"
+  },
+  "homepage": "https://github.com/missybur/Mongoose-Express-Message-Board#readme"
+}

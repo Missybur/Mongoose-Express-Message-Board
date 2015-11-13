@@ -7,6 +7,7 @@
   var messageInfo = localStorage.messageInfo ? JSON.parse(localStorage.messageInfo) : [];
   updateList();
 
+
   function init() {
     $('#add').click(addMessage);
     $('#list').on('click', '.remove', removeMessage);
@@ -41,6 +42,7 @@
     var firstName = $('#firstName').val();
     var lastName = $('#lastName').val();
     var message = $("#message").val();
+    var date = $("#date").val();
 
     var messageBoard = $("#messageBoard").val();
     $.ajax({
@@ -60,7 +62,8 @@
     var messageData = {
       firstName: firstName,
       lastName: lastName,
-      message: message
+      message: message,
+      date: date
     };
 
     messageInfo.push(messageData);

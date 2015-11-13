@@ -9,7 +9,12 @@ h1 {
 }
 
 #trash {
-  padding-left: 38px;
+  /*padding-left: 38px;*/
+  text-align: center;
+}
+
+#remove {
+  text-align: center;
 }
 
 div {
@@ -31,6 +36,10 @@ table, #sample {
 }
 
 th {
+  text-align: center;
+}
+
+#editor {
   text-align: center;
 }
 

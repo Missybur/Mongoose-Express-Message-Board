@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   var messageBoard = new MessageBoard(req.body);
-  MessageBoard.save(function(err, savedmessageBoard){
+  messageBoard.save(function(err, savedmessageBoard){
     res.send(savedmessageBoard);
   });
 });

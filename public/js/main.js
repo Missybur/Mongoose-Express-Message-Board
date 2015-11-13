@@ -4,180 +4,97 @@
 
   $(document).ready(init);
 
-  // Initialize data from local storage
-  var tasks = localStorage.tasks ? JSON.parse(localStorage.tasks) : [];
+  var messageInfo = localStorage.messageInfo ? JSON.parse(localStorage.messageInfo) : [];
   updateList();
 
   function init() {
-    $('#add').click(addTodo);
-    $('#list').on('change', 'input', checkboxChanged);
-    $('#list').on('click', '.remove', removeTodo);
-    // $("#list").on("click", "#edit", editContact );
+    $('#add').click(addMessage);
+    $('#list').on('click', '.remove', removeMessage);
+    $("#list").on("click", "#edit", editMessagePost);
   }
 
-  function removeTodo(e) {
+  function removeMessage(e) {
     var $target = $(e.target);
     var $targetRow = $target.closest('tr');
 
     var index = $targetRow.index();
-    tasks.splice(index, 1);
+    messageInfo.splice(index, 1);
+
+    var messageBoard = $("#messageBoard").val();
+     $.ajax({
+      type: "DELETE",
+      url: "/",
+      data: {string : messageBoard},
+    })
 
     updateList();
-    saveLocalStorage();
   }
 
-  document.getElementById("editor").addEventListener("input", function() {
-}, false);
+  function editMessagePost(e){
 
-
-
-  function checkboxChanged(e) {
-    var $target = $(e.target);
-    var $targetRow = $target.closest('tr');
-
-    var index = $targetRow.index();
-    tasks[index].completed = $target.is(':checked');
-
-    updateList();
-    saveLocalStorage();
+    document.getElementById("editor").addEventListener("input", function() {
+      alert("Click on the input boxes below to edit content!")
+  }, false);
   }
 
-  function addTodo() {
+  function addMessage() {
     var firstName = $('#firstName').val();
     var lastName = $('#lastName').val();
-    var phoneNumber = $("#phoneNumber").val();
     var message = $("#message").val();
-    var email = $("#email").val();
 
+    var messageBoard = $("#messageBoard").val();
+    $.ajax({
+      type: "POST",
+      url: "/",
+      data: {string : messageBoard},
+    })
 
-    // var task = new Task(description, date);
+      .done(function(data){
+    var htmlOutput = ($(`${data}`))
+    $("#html").append(htmlOutput)
+  })
+  .fail(function(err){
+    console.log(err)
+  });
 
-    var task = {
+    var messageData = {
       firstName: firstName,
       lastName: lastName,
-      phoneNumber: phoneNumber,
-      message: message,
-      email: email,
-      completed: false
+      message: message
     };
 
-    tasks.push(task);
+    messageInfo.push(messageData);
 
     updateList();
-    saveLocalStorage();
   }
 
   function updateList() {
-    console.log('tasks:', tasks);
+    console.log('messageInfo:', messageInfo);
     $('#list').empty();
 
-    if(tasks.length){
+    if(messageInfo.length){
       $('table.table').show();
     } else {
       $('table.table').hide();
     }
 
-    var taskElements = tasks.map(function(task){
+    var messageElements = messageInfo.map(function(messageData){
       var $tr = $('#sample').clone();
       $tr.removeAttr('id');
-      $tr.children('.firstName').text(task.firstName);
-      $tr.children('.lastName').text(task.lastName);
-      $tr.children('.phoneNumber').text(task.phoneNumber);
-      $tr.children('.message').text(task.message);
-      $tr.children('.email').text(task.email);
-      $tr.find('input').prop('checked', task.completed);
+      $tr.children('.firstName').text(messageData.firstName);
+      $tr.children('.lastName').text(messageData.lastName);
+      $tr.children('.message').text(messageData.message);
+      $tr.find('input').prop('checked', messageData.completed);
       $tr.css({
-        'text-decoration': task.completed ? 'line-through' : '',
-        'color': task.completed ? '#aaa' : ''
+        'text-decoration': messageData.completed ? 'line-through' : '',
+        'color': messageData.completed ? '#aaa' : ''
       });
       $tr.show();
       return $tr;
     });
 
-    $('#list').append(taskElements);
-  }
-
-  function saveLocalStorage() {
-    localStorage.tasks = JSON.stringify(tasks);
+    $('#list').append(messageElements);
   }
 
 })();
 
-
-// (function(){
-
-//   'use strict';
-
-//   $(document).ready(init);
-
-//   // Initialize data from local storage
-//   var messageInfo = localStorage.messageInfo ? JSON.parse(localStorage.messageInfo) : [];
-//   updateList();
-
-//   function init() {
-//     $('#add').click(addMessage);
-//     // $('#edit').on('click', 'input', editMessage);
-//     $('#remove').on('click', '.remove', removeMessage);
-//   }
-
-//   function removeMessage(e) {
-//     var $target = $(e.target);
-//     var $targetRow = $target.closest('tr');
-
-//     var index = $targetRow.index();
-//     messageInfo.splice(index, 1);
-
-//     updateList();
-//     // saveLocalStorage();
-//   }
-
-//   function addMessage() {
-//     var firstName = $('#firstName').val();
-//     var lastName = $('#lastName').val();
-//     var message = $("#message").val();
-
-//     var messageInfo = {
-//       firstName: firstName,
-//       lastName: lastName,
-//       message: message,
-//     };
-
-//     messageInfo.push(message);
-
-//     updateList();
-//     // saveLocalStorage();
-//   }
-
-//   function updateList() {
-//     console.log('messageInfo:', messageInfo);
-//     $('#list').empty();
-
-//     if(messageInfo.length){
-//       $('table.table').show();
-//     } else {
-//       $('table.table').hide();
-//     }
-
-//     var messageElements = messageInfo.map(function(message){
-//       var $tr = $('#sample').clone();
-//       $tr.removeAttr('id');
-//       $tr.children('#firstName').text(message.firstName);
-//       $tr.children('.lastName').text(message.lastName);
-//       $tr.children('.message').text(message.message);
-//       $tr.find('input').prop('checked', message.completed);
-//       $tr.css({
-//         'text-decoration': message.completed ? 'line-through' : '',
-//         'color': message.completed ? '#aaa' : ''
-//       });
-//       $tr.show();
-//       return $tr;
-//     });
-
-//     $('#list').append(messageElements);
-//   }
-
-//   // function saveLocalStorage() {
-//   //   localStorage.tasks = JSON.stringify(tasks);
-//   // }
-
-// })();

@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Message Board</title>
-</head>
-<body>
-  <div class="container">
-    <h1>Message Board</h1>
-    <label for="lastName">First Name:</label>
-    <input class="editable_textarea" type="text" id="firstName">
-    <label for="lastName">Last Name:</label>
-    <input type="text" id='lastName'>
-    <label for="message" id="message">Message:</label>
-    <input id="message" type="text">
-    <button class="btn btn-default" id='add'>Add</button>
-    <div class="container" id="messageBoardContainer">
-      <table id="contact-table" class="table table-bordered">
-        <thead>
-          <tr>
-            <th class='col-xs-1'>Edit</th>
-            <th class='col-xs-2'>First Name:</th>
-            <th class='col-xs-2'>Last Name:</th>
-            <th class='col-xs-2'>Message:</th>
-            <th class='col-xs-1'>Delete:</th>
+  <head>
+    <title>Home</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Message Board</h1>
+      <label for="firstName">First Name:</label>
+      <input id="firstName" type="text" class="editable_textarea">
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" type="text">
+      <label for="message">Message:</label>
+      <input id="message" type="text">
+      <button id="add" class="btn btn-default">Add</button>
+      <div id="messageBoardContainer" class="container">
+        <table id="contact-table" class="table table-bordered">
+          <thead>
+            <tr id="contact-table" class="table table-bordered">
+              <th class="col-xs-2"></th>
+              <th class="col-xs-2">First Name:</th>
+              <th class="col-xs-2">Last Name:</th>
+              <th class="col-xs-2">Message:</th>
+              <th class="col-xs-2">Date:</th>
+              <th class="col-xs-2"></th>
+            </tr>
+          </thead>
+          <tbody id="list"></tbody>
+          <tr id="sample">
+            <td><a href="#" class="edit"><i id="edit" class="fa fa-pencil-square-o"></i></a></td>
+            <td id="editor" contenteditable="true" class="firstName"></td>
+            <td id="editor" contenteditable="true" class="lastName"></td>
+            <td id="editor" contenteditable="true" class="message"></td>
+            <td id="editor" contenteditable="true" class="date"></td>
+            <td id="editor" contenteditable="true"><a href="#" class="remove"><i id="remove" class="fa fa-trash-o"></i></a></td>
           </tr>
-        </thead>
-        <tbody id='list'></tbody>
-
-         <tr id='sample'>
-        <td><a class='edit' href="#"><i class="fa fa-pencil-square-o"></i>
-          <button class=".editable btn btn-default" id='edit'>Edit</button></td>
-        <td class="editable_textarea" class='firstName'></td>
-        <td class='lastName'></td>
-        <td type="message" class='message'></td>
-        <td><a class='remove' href="#"><i class='fa fa-trash-o' id="trash"></i></a></td>
-      </tr>
-    </table>
+        </table>
+      </div>
     </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-  <script src="main.js"></script>
-</body>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
 </html>

@@ -18,20 +18,24 @@ html(lang="en")
       #messageBoardContainer.container
         table#contact-table.table.table-bordered
           thead
-            tr
-              th.col-xs-1
+            tr#contact-table.table.table-bordered
+              th.col-xs-2
               th.col-xs-2 First Name:
               th.col-xs-2 Last Name:
               th.col-xs-2 Message:
+              th.col-xs-2 Date:
+              th.col-xs-2
+
           tbody#list
           tr#sample
-            td#edit
+            td
               a.edit(href='#')
-                i.fa.fa-pencil-square-o
+                i#edit.fa.fa-pencil-square-o
             td#editor(contenteditable='true').firstName
             td#editor(contenteditable='true').lastName
             td#editor(contenteditable='true').message
-            td
+            td#editor(contenteditable='true').date
+            td#editor(contenteditable='true')
               a.remove(href='#')
                 i#remove.fa.fa-trash-o
 

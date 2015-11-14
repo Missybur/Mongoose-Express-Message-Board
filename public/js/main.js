@@ -91,6 +91,26 @@ function addRoom(event) {
 
 }
 
+
+function deleteRoom(event) {
+  event.preventDefault();
+  var newRoom = $('#input').val();
+  $.ajax({
+  type: "DELETE",
+    url: "/rooms",
+    data: {name : newRoom},
+  })
+
+  .done(function(data){
+    console.log(data);
+    getRooms();
+  })
+  .fail(function(err){
+    console.log(err)
+  });
+
+}
+
 function appendRooms(rooms){
   event.preventDefault();
   var newRow = {}

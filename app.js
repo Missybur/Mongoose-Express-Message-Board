@@ -9,7 +9,7 @@ var morgan = require('morgan');
 var app = express();
 
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/messageBoardapp");
+mongoose.connect("mongodb://localhost/roomsapp");
 
 app.set('view engine', 'jade');
 

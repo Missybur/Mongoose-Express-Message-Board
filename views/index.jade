@@ -1,43 +1,98 @@
 doctype html
-html(lang="en")
+html(lang='en')
   head
-    title Home
-    link(href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+    meta(charset='UTF-8')
+    title Rooms
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
-    link(rel="stylesheet" href="./css/style.css")
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/style.css')
   body
+    div
+        img(src='images/bed.png')
+    form
+      .container#header
+        h1 Modify Rooms
+        .container
+            .large-4.columns
+              .row.collapse
+            label Add Room
+                .small-9.columns
+                  input#input(type='text', placeholder='new room name')
+                .small-3.columns
+                  span.postfix
+            button#add Add
+            .container#addRoom
+            .large-4.columns
+              .row.collapse
+            label#addItemLabel Add Item
+                .small-9.columns
+                  input#inputItem(type='text', placeholder='new item name')
+                .small-3.columns
+                  span.postfix
+            button#addItem Add
     .container
-      h1 Message Board
-      label(for='firstName') First Name:
-      input#firstName.editable_textarea(type='text')
-      label(for='lastName') Last Name:
-      input#lastName(type='text')
-      label(for='message') Message:
-      input#message(type='text')
-      button#add.btn.btn-default Add
-      #messageBoardContainer.container
-        table#contact-table.table.table-bordered
-          thead
-            tr#contact-table.table.table-bordered
-              th.col-xs-2
-              th.col-xs-2 First Name:
-              th.col-xs-2 Last Name:
-              th.col-xs-2 Message:
-              th.col-xs-2 Date:
-              th.col-xs-2
-
-          tbody#list
-          tr#sample
-            td
-              a.edit(href='#')
-                i#edit.fa.fa-pencil-square-o
-            td#editor(contenteditable='true').firstName
-            td#editor(contenteditable='true').lastName
-            td#editor(contenteditable='true').message
-            td#editor(contenteditable='true').date
-            td#editor(contenteditable='true')
-              a.remove(href='#')
-                i#remove.fa.fa-trash-o
-
-    script(src='./bower_components/jquery/dist/jquery.min.js')
-    script(src='./js/main.js')
+    table.table.table-condensed
+      thead
+        tr
+          th#head Room Type
+          th#head Add Item to Room
+          th#head Room Item(s)
+          th#head Delete Room
+      tbody#list
+        tr
+          td.name
+            select#selector
+              option(value='Bedroom1') Bedroom 1
+              option(value='Bedroom2') Bedroom 2
+              option(value='Bedroom3') Bedroom 3
+              option(value='Bedroom4') Bedroom 4
+          td#editor(contenteditable='true') Floor 3
+          td#editor(contenteditable='true') Yellow
+          td
+            select#selector
+              option(value='pillow') Pillows
+              option(value='blanket') Blanket
+              option(value='novel') Novel
+              option(value='hamper') Hamper
+          td
+            a.remove(href="#")
+            i#remove.fa.fa-trash-o
+        tr
+          td
+            select#selector
+              option(value='livingRoom1') Living Room 1
+              option(value='livingRoom2') Living Room 2
+              option(value='livingRoom3') Living Room 3
+              option(value='livingRoom4') Living Room 4
+          td#editor(contenteditable='true') First Floor
+          td#editor(contenteditable='true') Green
+          td
+            select#selector
+                option(value='flowers') Flowers
+                option(value='couch') Couch
+                option(value='rug') Rug
+                option(value='dog') Dog
+          td
+            a.remove(href="#")
+            i#remove.fa.fa-trash-o
+        tr
+          td
+            select#selector
+              option(value='kitchen1') Kitchen 1
+              option(value='kitchen1') Kitchen 2
+              option(value='kitchen1') Kitchen 3
+              option(value='kitchen1') Kitchen 4
+          td#editor(contenteditable='true') Floor 5
+          td#editor(contenteditable='true') Blue
+          td
+            select#selector
+              option(value='spoon') Spoon
+              option(value='fork') Fork
+              option(value='knive') Knive
+              option(value='apron') Apron
+          td
+            a.remove(href="#")
+            i#remove.fa.fa-trash-o
+    script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+    script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src='js/main.js')

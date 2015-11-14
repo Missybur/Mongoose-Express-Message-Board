@@ -20,8 +20,11 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // ROUTES
+// app.use('/messageBoards', require('./routes/messageBoards'));
+
 app.use('/', require('./routes/index'));
-app.use('/messageBoards', require('./routes/messageBoards'));
+app.use('/items', require('./routes/items'));
+app.use('/rooms', require('./routes/rooms'));
 
 
 // 404 HANDLER
